@@ -58,6 +58,18 @@ $artists = mysqli_query($mysqli, "SELECT * FROM artists ORDER BY id ASC");
                                 </li>
                             </ul>
                         </li>
+                        <li>
+                            <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white">
+                                <i class="fas fa-user-alt"></i><span class="d-none d-sm-inline" style="padding-left: 15px;">Manage Registers</span></a>
+                            <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
+                                <li class="w-100">
+                                    <a href="../Register/viewregister.php" class="nav-link pr-0 pl-3 text-white"><i class="fa-solid fa-eye"></i> <span class="d-none d-sm-inline">View Registers</a>
+                                </li>
+                                <li>
+                                    <a href="../Register/addregister.php" class="nav-link pr-0 pl-3 text-white"><i class="fa-solid fa-user-plus"></i> <span class="d-none d-sm-inline">Add Register</a>
+                                </li>
+                            </ul>
+                        </li>
                         <hr>
                         
                     </ul>

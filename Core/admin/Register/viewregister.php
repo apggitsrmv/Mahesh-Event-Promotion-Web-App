@@ -3,7 +3,7 @@
 include_once("../../connection.php");
 
 // Fetch all artist data from database
-$result = mysqli_query($mysqli, "SELECT * FROM artists ORDER BY id ASC");
+$result = mysqli_query($mysqli, "SELECT * FROM register ORDER BY id ASC");
 
 ?>
 <!DOCTYPE html>
@@ -63,18 +63,17 @@ $result = mysqli_query($mysqli, "SELECT * FROM artists ORDER BY id ASC");
                         </li>
                         <li>
                             <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white">
-                                <i class="fas fa-user-alt"></i><span class="d-none d-sm-inline" style="padding-left: 15px;">Manage Registers</span></a>
+                                <i class="fas fa-user-alt"></i><span class="d-none d-sm-inline" style="padding-left: 15px;">Manage Register</span></a>
                             <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
                                 <li class="w-100">
-                                    <a href="../Register/viewregister.php" class="nav-link pr-0 pl-3 text-white"><i class="fa-solid fa-eye"></i> <span class="d-none d-sm-inline">View Registers</a>
+                                    <a href="viewregister.php" class="nav-link pr-0 pl-3 text-white"><i class="fa-solid fa-eye"></i> <span class="d-none d-sm-inline">View Register</a>
                                 </li>
                                 <li>
-                                    <a href="../Register/addregister.php" class="nav-link pr-0 pl-3 text-white"><i class="fa-solid fa-user-plus"></i> <span class="d-none d-sm-inline">Add Register</a>
+                                    <a href="addregister.php" class="nav-link pr-0 pl-3 text-white"><i class="fa-solid fa-user-plus"></i> <span class="d-none d-sm-inline">Add Register</a>
                                 </li>
                             </ul>
                         </li>
-                        <hr>
-                        
+                        <hr>                        
                     </ul>
                 </div>
             </div>
@@ -88,7 +87,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM artists ORDER BY id ASC");
                         </div>
                 
                         <div class="mt-5 d-flex justify-content-between align-items-center">
-                            <h3 class="">Artist List</h3>
+                            <h3 class="">Register List</h3>
                             <button class="btn btn-dark"><a href="addartist.php" class="text-white text-decoration-none">Add artist</a></button>
                         </div>
                         <div class="mt-5 table-responsive">
@@ -96,12 +95,14 @@ $result = mysqli_query($mysqli, "SELECT * FROM artists ORDER BY id ASC");
                                 <thead class="table-dark">
                                   <tr>
                                     <th scope="col">No</th>
+                                    <th scope="col">Image</th>                                    
                                     <th scope="col">Name</th>
-                                    <th scope="col">Image</th>
-                                    <th scope="col">Biography</th>
-                                    <th scope="col">Facebook</th>
-                                    <th scope="col">Instagram</th>
-                                    <th scope="col">Twitter</th>
+                                    <th scope="col">age</th>                                    
+                                    <th scope="col">Aadhar No</th>
+                                    <th scope="col">Mobile No</th>
+                                    <th scope="col">Email ID</th>
+                                    <th scope="col">Gender</th>
+                                    <th scope="col">Events</th>
                                     <th scope="col">Actions</th>
                                   </tr>
                                 </thead>
@@ -113,14 +114,17 @@ $result = mysqli_query($mysqli, "SELECT * FROM artists ORDER BY id ASC");
                                         echo "<td>".$i."</td>";
                                         ?>
                                         <td>
-                                            <img src="../../Images/<?php echo $user_data['artist_image']; ?>" width="50" height="50" class="rounded-circle object-fit-cover" style="max-width:50px;">
+                                            <img src="../../Images/<?php echo $user_data['visiter_image']; ?>" width="50" height="50" class="rounded-circle object-fit-cover" style="max-width:50px;">
                                         </td>
                                         <?php
-                                        echo "<td>".$user_data['artist_name']."</td>";
-                                        echo "<td>".$user_data['biography']."</td>";
-                                        echo "<td>".$user_data['facebook']."</td>";
-                                        echo "<td>".$user_data['instagram']."</td>";
-                                        echo "<td>".$user_data['twitter']."</td>";
+                                        echo "<td>".$user_data['visiter_name']."</td>";
+                                        echo "<td>".$user_data['visiter_age']."</td>";
+                                        echo "<td>".$user_data['visiter_aadhar']."</td>";
+                                        echo "<td>".$user_data['visiter_mno']."</td>";
+                                        echo "<td>".$user_data['visiter_email']."</td>";
+                                        echo "<td>".$user_data['visiter_gender']."</td>";
+                                        echo "<td>".$user_data['visiter_event']."</td>";
+                                       
                                         ?>      
                                         <td>
                                             <form action="delete.php" method="POST">

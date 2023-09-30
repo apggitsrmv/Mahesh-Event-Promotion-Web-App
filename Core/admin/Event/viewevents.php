@@ -27,7 +27,7 @@ $events = mysqli_query($mysqli, "SELECT * FROM events ORDER BY id ASC");
 <body> 
     <div class="container-fluid">
         <div class="row flex-nowrap">
-            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
                 <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                     <a href="../../index.php" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                         <span class="fs-5 d-none d-sm-inline">eventy.</span>
@@ -43,10 +43,10 @@ $events = mysqli_query($mysqli, "SELECT * FROM events ORDER BY id ASC");
                                 <i class="fas fa-calendar-alt"></i> <span class="d-none d-sm-inline" style="padding-left: 15px;">Manage Events</span> </a>
                             <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                                 <li class="w-100">
-                                    <a href="viewevents.php" class="nav-link pr-0 pl-3 text-white"><i class="fa-solid fa-eye"></i> <span class="d-none d-sm-inline">View Events</a>
+                                    <a href="../Event/viewevents.php" class="nav-link pr-0 pl-3 text-white"><i class="fa-solid fa-eye"></i> <span class="d-none d-sm-inline">View Events</a>
                                 </li>
                                 <li>
-                                    <a href="addevent.php" class="nav-link pr-0 pl-3 text-white"><i class="fa-solid fa-calendar-plus"></i> <span class="d-none d-sm-inline">Add Event</a>
+                                    <a href="../Event/addevent.php" class="nav-link pr-0 pl-3 text-white"><i class="fa-solid fa-calendar-plus"></i> <span class="d-none d-sm-inline">Add Event</a>
                                 </li>
                             </ul>
                         </li>
@@ -55,15 +55,26 @@ $events = mysqli_query($mysqli, "SELECT * FROM events ORDER BY id ASC");
                                 <i class="fas fa-user-alt"></i><span class="d-none d-sm-inline" style="padding-left: 15px;">Manage Artists</span></a>
                             <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
                                 <li class="w-100">
-                                    <a href="../Artist/viewartist.php" class="nav-link pr-0 pl-3 text-white"><i class="fa-solid fa-eye"></i>  <span class="d-none d-sm-inline">View Artists</a>
+                                    <a href="../Artist/viewartist.php" class="nav-link pr-0 pl-3 text-white"><i class="fa-solid fa-eye"></i> <span class="d-none d-sm-inline">View Artists</a>
                                 </li>
                                 <li>
-                                    <a href="../Artist/addartist.php" class="nav-link pr-0 pl-3 text-white"><i class="fa-solid fa-user-plus"></i>  <span class="d-none d-sm-inline">Add Artist</a>
+                                    <a href="../Artist/addartist.php" class="nav-link pr-0 pl-3 text-white"><i class="fa-solid fa-user-plus"></i> <span class="d-none d-sm-inline">Add Artist</a>
                                 </li>
                             </ul>
                         </li>
-                        <hr>
-                        
+                        <li>
+                            <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle text-white">
+                                <i class="fas fa-user-alt"></i><span class="d-none d-sm-inline" style="padding-left: 15px;">Manage Registers</span></a>
+                            <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
+                                <li class="w-100">
+                                    <a href="../Register/viewregister.php" class="nav-link pr-0 pl-3 text-white"><i class="fa-solid fa-eye"></i> <span class="d-none d-sm-inline">View Registers</a>
+                                </li>
+                                <li>
+                                    <a href="../Register/addregister.php" class="nav-link pr-0 pl-3 text-white"><i class="fa-solid fa-user-plus"></i> <span class="d-none d-sm-inline">Add Register</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <hr>                        
                     </ul>
                 </div>
             </div>
@@ -119,7 +130,7 @@ $events = mysqli_query($mysqli, "SELECT * FROM events ORDER BY id ASC");
                                         echo "<td>".$date."</td>";
                                         echo "<td>".$starttime."</td>";
                                         echo "<td>".$endtime."</td>";
-                                        ?>
+                                        ?>        
                                         <td>
                                             <form action="delete.php" method="POST">
                                                 <input type="hidden" id="eventId" name="id" value="<?php echo $user_data['id']; ?>" />
@@ -127,7 +138,6 @@ $events = mysqli_query($mysqli, "SELECT * FROM events ORDER BY id ASC");
                                             </form>
                                         </td>
                                         <?php
-                                        echo "</tr>";
                                         $i++;
                                     }
                                     mysqli_close($mysqli);

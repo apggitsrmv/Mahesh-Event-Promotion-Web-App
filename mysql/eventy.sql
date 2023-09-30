@@ -37,6 +37,18 @@ CREATE TABLE `artists` (
   `twitter` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE register(
+  `id` int(11) NOT NULL,
+  `visiter_image` varchar(100) NOT NULL,
+  `visiter_name` varchar(100) NOT NULL,
+  `visiter_age` varchar(100) NOT NULL,
+  `visiter_mno` varchar(100) NOT NULL,
+  `visiter_email` varchar(225) NOT NULL,
+  `visiter_gender` varchar(100) DEFAULT NULL,
+  `visiter_event` varchar(100) DEFAULT NULL,
+  `visiter_aadhar` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
 -- Dumping data for table `artists`
 --

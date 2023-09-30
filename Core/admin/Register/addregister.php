@@ -1,3 +1,15 @@
+<?php
+// Create database connection 
+include_once("../../connection.php");
+
+// Fetch all Events data from database
+$event = mysqli_query($mysqli, "SELECT * 
+FROM events 
+WHERE events.date BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 6 MONTH)
+ORDER BY id ASC, events.date ASC;
+");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +21,7 @@
     <!-- icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <title>Admin | Add Artist</title>
+    <title>Admin | Add Register</title>
 
 </head>
 <body>
@@ -31,10 +43,10 @@
                                 <i class="fas fa-calendar-alt"></i> <span class="d-none d-sm-inline" style="padding-left: 15px;">Manage Events</span> </a>
                             <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                                 <li class="w-100">
-                                    <a href="../Event/viewevents.php" class="nav-link pr-0 pl-3 text-white"><i class="fa-solid fa-eye"></i> <span class="d-none d-sm-inline">View Events</a>
+                                    <a href="../Event/viewregister.php" class="nav-link pr-0 pl-3 text-white"><i class="fa-solid fa-eye"></i> <span class="d-none d-sm-inline">View Events</a>
                                 </li>
                                 <li>
-                                    <a href="../Event/addevent.php" class="nav-link pr-0 pl-3 text-white"><i class="fa-solid fa-calendar-plus"></i> <span class="d-none d-sm-inline">Add Event</a>
+                                    <a href="../Event/addregister.php" class="nav-link pr-0 pl-3 text-white"><i class="fa-solid fa-calendar-plus"></i> <span class="d-none d-sm-inline">Add Event</a>
                                 </li>
                             </ul>
                         </li>
@@ -55,17 +67,15 @@
                     </ul>
                 </div>
             </div>
-            <div class="col py-3">
-                
-                <div class="row justify-content-center">
-                   
+            <div class="col py-3">                
+                <div class="row justify-content-center">                   
                     <div class="col-lg-10 ">
                         <div class="text-end w-100 mb-5">
                             <h3>Welcome Admin!</h3>
                         </div>
                 
                         <div class="mt-5 d-flex justify-content-between align-items-center">
-                            <h3 class="">Add Artist</h3>
+                            <h3 class="">Add Register</h3>
                         </div>
                         <div class="mt-5">
                             <form action="add.php" method="POST" enctype="multipart/form-data">
@@ -79,24 +89,44 @@
                                         <input type="text" class="form-control" id="name" name="name" required>
                                     </div>
                                     <div class="mb-3 col-md-6">
-                                        <label for="biography" class="form-label">Biography</label>
-                                        <textarea class="form-control" id="biography" name="biography" rows="3" required></textarea>
+                                        <label for="aadhar" class="form-label">Aadhar No *</label>
+                                        <input type="text" class="form-control" id="aadhar" name="aadhar" required>
                                     </div>
                                     <div class="mb-3 col-md-6">
-                                        <label for="facebook" class="form-label">Facebook</label>
-                                        <input type="text" class="form-control" id="facebook" name="facebook">
+                                        <label for="age" class="form-label">Age</label>
+                                        <input type="text" class="form-control" id="age" name="age" rows="3" required></textarea>
                                     </div>
                                     <div class="mb-3 col-md-6">
-                                        <label for="instagram" class="form-label">Instagram</label>
-                                        <input type="text" class="form-control" id="instagram" name="instagram">
+                                        <label for="mno" class="form-label">Mobile No</label>
+                                        <input type="text" class="form-control" id="mno" name="mno">
                                     </div>
                                     <div class="mb-3 col-md-6">
-                                        <label for="twitter" class="form-label">Twitter</label>
-                                        <input type="text" class="form-control" id="twitter" name="twitter">
+                                        <label for="email" class="form-label">EMail ID</label>
+                                        <input type="text" class="form-control" id="email" name="email">
+                                    </div>
+                                    <div class="mb-3 col-md-6">
+                                        <label for="gender" class="form-label">Gender</label>
+                                        <input type="text" class="form-control" id="gender" name="gender">
+                                    </div>
+                                    <div class="mb-3 col-md-6">
+                                        <label for="event" class="form-label">event</label>
+                                        <select name="event" id="event" class="form-select">
+                                            <option value="">Select Event</option>
+                                            <option value="">---------</option>
+                                            
+                                            <?php 
+                                                while($Event_data = mysqli_fetch_array($event)) {
+                                            ?>
+                                            <option value="<?php echo $Event_data['id'] ?>"><?php echo $Event_data['title'] ?></option>
+                                            <?php
+                                                }
+                                                mysqli_close($mysqli);
+                                            ?>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="mt-3">
-                                    <button class="btn btn-dark" type="submit" name="submit">Add Artist</button>
+                                    <button class="btn btn-dark" type="submit" name="submit">Register Event</button>
                                 </div>
                             </form>
                         </div>

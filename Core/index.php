@@ -6,7 +6,9 @@ include_once("connection.php");
 $featured = mysqli_query($mysqli, "SELECT *
 FROM events
 INNER JOIN artists ON events.artist_id=artists.id
-WHERE events.id = 2");
+WHERE events.date between CURDATE() and DATE_ADD(CURDATE(), INTERVAL 6 MONTH)
+ORDER BY events.date DESC
+LIMIT 1");
 
 $featured_data = mysqli_fetch_array($featured, MYSQLI_ASSOC);  
 
@@ -56,6 +58,9 @@ LIMIT 3 ");
                         </li>
                         <li class="nav-item">
                         <a class="nav-link" href="past.php">Past Events</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="regevents.php">Register</a>
                         </li>
                     </ul>
                     <button class="btn btn-dark"><a href="login.php">Admin Login</a></button>

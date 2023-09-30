@@ -48,6 +48,9 @@ ORDER BY events.date ASC");
                             <li class="nav-item">
                             <a class="nav-link" href="past.php">Past Events</a>
                             </li>
+                            <li class="nav-item">
+                        <a class="nav-link" href="regevents.php">Register</a>
+                        </li>
                         </ul>
                         <button class="btn btn-dark"><a href="login.php">Admin Login</a></button>
                     </div>
