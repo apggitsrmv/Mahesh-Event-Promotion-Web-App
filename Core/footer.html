@@ -1,0 +1,35 @@
+<!-- Your website content goes here -->
+
+<footer>
+    <div class="contact-section">
+        <h3>Contact Us</h3>
+        <div class="contact-form">
+            <form action="sendmail.php" method="post">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+        <div class="contact-options">
+            <div>
+                <p>Email: info@eventy.com</p>
+            </div>
+            <div>
+                <p class="mail-option" onclick="sendMail()">Direct Mail</p>
+            </div>
+        </div>
+    </div>
+    <p>&copy; <?php echo date("Y"); ?> Eventy</p>
+</footer>
+
+<!-- Your other HTML content -->
+
+<script>
+    function sendMail() {
+        window.location.href = 'mailto:22pca004@rmv.ac.in';
+    }
+</script>

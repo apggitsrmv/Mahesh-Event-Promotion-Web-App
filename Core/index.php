@@ -264,9 +264,7 @@ LIMIT 3 ");
             </div>
         </div>
     </main>
-    <footer class="py-3">
-        <p class="text-center mb-0">©2023 copyright eventy.</p>
-    </footer>
+    <?php include("footer.html"); ?>
     <!-- JS -->
     <!-- Bootstrap -->  
     <script src="JS/bootstrap/bootstrap.min.js"></script>

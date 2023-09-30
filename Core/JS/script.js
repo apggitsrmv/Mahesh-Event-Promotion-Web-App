@@ -20,7 +20,6 @@ $(document).ready(function(){
   showGraph();
 });
 
-
 function showChart()
         {
             {
@@ -100,4 +99,7 @@ function showChart()
                     });
                 });
             }
+        }
+        function footer(){
+            $("#footer").load("../footer.html");
         }

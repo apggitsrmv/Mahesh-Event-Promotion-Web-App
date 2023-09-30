@@ -14,12 +14,20 @@ include_once("connection.php");
     VALUES('$filename','$name','$aadhar','$age','$mno','$email','$gender','$event')";
     // Insert event data into table
     $result = mysqli_query($mysqli, $query);
-    if (move_uploaded_file($tempname, $folder)) {
-        header('Location: regevents.php');
-        //echo "<h3> Registration Successful!</h3>";
-    }
-    else {
-        echo "<h3> Failed to upload image!</h3>";
+    if ($result) {
+        // If insertion is successful
+        echo '<script>
+                setTimeout(function() {
+                    window.location.href = "regevents.php?success=1"; // Redirect to regevents.php with success parameter
+                }); 
+              </script>';
+    } else {
+        // If insertion fails
+        echo '<script>
+                setTimeout(function() {
+                    window.location.href = "regevents.php"; // Redirect to regevents.php without success parameter
+                });
+              </script>';
     }
     mysqli_close($mysqli);
 ?>
